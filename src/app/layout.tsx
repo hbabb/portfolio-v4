@@ -1,6 +1,9 @@
 import "@/app/globals.css";
-import { ThemesProvider } from "@/config/theme-provider";
-import { cn } from "@/lib/utils";
+import { Footer } from "@/components/ui/Footer";
+import { Header } from "@/components/ui/Header";
+import { ThemeSwitch } from "@/components/ui/theme-switch";
+import { ActiveSectionContextProvider } from "@/context/active-section-context";
+import { ThemeContextProvider } from "@/context/theme-context";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
@@ -20,11 +23,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={cn("font-inter mx-auto flex min-h-screen flex-col items-center antialiased", inter.variable)}>
-        <ThemesProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          {children}
-        </ThemesProvider>
+    <html lang="en" suppressHydrationWarning className="!scroll-smooth">
+      <body
+        className={`${inter.className} dark:text-opacity-90 relative bg-gray-50 pt-28 text-gray-950 sm:pt-36 dark:bg-gray-900 dark:text-gray-50`}
+      >
+        <div className="absolute top-[-6rem] right-[11rem] -z-10 h-[31.25rem] w-[31.25rem] rounded-full bg-[#fbe2e3] blur-[10rem] sm:w-[68.75rem] dark:bg-[#946263]" />
+        <div className="absolute top-[-1rem] left-[-35rem] -z-10 h-[31.25rem] w-[50rem] rounded-full bg-[#dbd5fb] blur-[10rem] sm:w-[68.75rem] md:left-[-33rem] lg:left-[-28rem] xl:left-[-15rem] dark:bg-[#676394]" />
+        <ThemeContextProvider>
+          <ActiveSectionContextProvider>
+            <Header />
+            {children}
+            <Footer />
+            <ThemeSwitch />
+          </ActiveSectionContextProvider>
+        </ThemeContextProvider>
       </body>
     </html>
   );

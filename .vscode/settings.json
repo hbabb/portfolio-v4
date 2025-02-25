@@ -20,5 +20,17 @@
     "**/components/**/index.tsx": "${dirname} - Component"
   },
   "json.schemaDownload.enable": false,
-  "cSpell.words": ["nextui", "shadcn", "sonner", "tabler", "vercel"]
+  "cSpell.words": [
+    "Babb",
+    "bootcamp",
+    "corpcomment",
+    "nextui",
+    "rmtdev",
+    "shadcn",
+    "sonner",
+    "tabler",
+    "upskilled",
+    "vercel",
+    "wordanalytics"
+  ]
 }
